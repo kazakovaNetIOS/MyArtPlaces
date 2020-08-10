@@ -32,6 +32,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         cell?.textLabel?.text = theaterNames[indexPath.row]
+        cell?.imageView?.image = UIImage(named: theaterNames[indexPath.row])
         
         return cell!
     }
