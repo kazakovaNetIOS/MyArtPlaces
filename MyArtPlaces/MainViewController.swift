@@ -10,6 +10,14 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let theaterNames = ["Мастерская Петра Фоменко", "Театр сатиры",
+                        "Театр им. Вахтангова", "Современник",
+                        "Театр им. Моссовета", "Содружество актеров Таганки",
+                        "Театр им. Пушкина", "МДМ", "РАМТ", "МХТ им. Чехова",
+                        "Театр мюзикла", "Русская песня",
+                        "Московский театр оперетты", "МХАТ им. М. Горького",
+                        "Театриум на Серпуховке"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -17,12 +25,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //    MARK - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return theaterNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = "Cell"
+        
+        cell?.textLabel?.text = theaterNames[indexPath.row]
+        
         return cell!
     }
 }
