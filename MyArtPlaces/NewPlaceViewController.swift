@@ -10,6 +10,8 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
 
+    @IBOutlet weak var imageOfPlace: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,7 @@ class NewPlaceViewController: UITableViewController {
 extension NewPlaceViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.row == 0 {
             let actionSheet = UIAlertController(title: nil,
                                                 message: nil,
@@ -54,6 +57,7 @@ extension NewPlaceViewController: UITextFieldDelegate {
     
     // Hide the keyboard by clicking on Done
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         return true
     }
@@ -61,17 +65,29 @@ extension NewPlaceViewController: UITextFieldDelegate {
 
 // MARK - Work with image
 
-extension NewPlaceViewController {
+extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
+        
         guard UIImagePickerController.isSourceTypeAvailable(source) else {
             return
         }
         
         let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         imagePicker.allowsEditing = true
         imagePicker.sourceType = source
         
         present(imagePicker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        imageOfPlace.image = info[.editedImage] as? UIImage
+        imageOfPlace.contentMode = .scaleAspectFill
+        imageOfPlace.clipsToBounds = true
+        
+        dismiss(animated: true)
     }
 }
