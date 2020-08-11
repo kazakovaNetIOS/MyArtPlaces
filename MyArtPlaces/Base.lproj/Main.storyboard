@@ -15,18 +15,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PVm-4R-dTf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PVm-4R-dTf">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="OAo-Up-ctE">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="OAo-Up-ctE" customClass="CustomTableViewCell" customModule="MyArtPlaces" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OAo-Up-ctE" id="ggS-9B-FGe">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jF0-R0-2y3">
+                                                    <rect key="frame" x="15" y="10" width="65" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="65" id="RWn-c1-fJu"/>
+                                                        <constraint firstAttribute="height" constant="65" id="z0s-4w-AEK"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FO-a0-2KO">
+                                                    <rect key="frame" x="95" y="9" width="303" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="kri-vc-zDS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Trw-m4-4Fn">
+                                                    <rect key="frame" x="95" y="35" width="303" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="XM8-UV-hSI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-AO-N1W">
+                                                    <rect key="frame" x="95" y="54" width="303" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Rwd-Ec-6xB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bKK-AO-N1W" secondAttribute="trailing" constant="16" id="81Y-2E-7iO"/>
+                                                <constraint firstItem="bKK-AO-N1W" firstAttribute="top" secondItem="Trw-m4-4Fn" secondAttribute="bottom" constant="1" id="MV7-6J-7et"/>
+                                                <constraint firstItem="jF0-R0-2y3" firstAttribute="leading" secondItem="ggS-9B-FGe" secondAttribute="leading" constant="15" id="UhG-dI-Ooe"/>
+                                                <constraint firstItem="Trw-m4-4Fn" firstAttribute="leading" secondItem="jF0-R0-2y3" secondAttribute="trailing" constant="15" id="VN8-ZK-3jV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Trw-m4-4Fn" secondAttribute="trailing" constant="-4" id="YSy-Ni-lQv"/>
+                                                <constraint firstItem="bKK-AO-N1W" firstAttribute="leading" secondItem="jF0-R0-2y3" secondAttribute="trailing" constant="15" id="aNh-xA-ZVM"/>
+                                                <constraint firstAttribute="bottom" secondItem="bKK-AO-N1W" secondAttribute="bottom" constant="9.5" id="ccm-FB-0BR"/>
+                                                <constraint firstItem="8FO-a0-2KO" firstAttribute="top" secondItem="ggS-9B-FGe" secondAttribute="top" constant="9" id="lPg-2g-PTw"/>
+                                                <constraint firstItem="8FO-a0-2KO" firstAttribute="leading" secondItem="jF0-R0-2y3" secondAttribute="trailing" constant="15" id="rcQ-Pg-5XZ"/>
+                                                <constraint firstItem="jF0-R0-2y3" firstAttribute="centerY" secondItem="ggS-9B-FGe" secondAttribute="centerY" id="uHU-cE-19A"/>
+                                                <constraint firstItem="Trw-m4-4Fn" firstAttribute="top" secondItem="8FO-a0-2KO" secondAttribute="bottom" constant="5" id="ucz-QH-bfC"/>
+                                                <constraint firstAttribute="trailing" secondItem="8FO-a0-2KO" secondAttribute="trailing" constant="16" id="wFg-Bt-eY0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageOfPlace" destination="jF0-R0-2y3" id="QhY-u9-uwg"/>
+                                            <outlet property="locationLabel" destination="Trw-m4-4Fn" id="UZD-Oz-LID"/>
+                                            <outlet property="titleLabel" destination="8FO-a0-2KO" id="PVa-7q-6Fn"/>
+                                            <outlet property="typeLabel" destination="bKK-AO-N1W" id="3TC-or-Rja"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
