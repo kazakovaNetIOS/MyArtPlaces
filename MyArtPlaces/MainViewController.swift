@@ -10,13 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let theaterNames = ["Мастерская Петра Фоменко", "Театр сатиры",
-                        "Театр им. Вахтангова", "Современник",
-                        "Театр им. Моссовета", "Содружество актеров Таганки",
-                        "Театр им. Пушкина", "МДМ", "РАМТ", "МХТ им. Чехова",
-                        "Театр мюзикла", "Русская песня",
-                        "Московский театр оперетты", "МХАТ им. М. Горького",
-                        "Театриум на Серпуховке"]
+    let places = Place.getPlaces()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,23 +20,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //    MARK - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return theaterNames.count
+        return places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell
         
-        cell.titleLabel.text = theaterNames[indexPath.row]
-        cell.imageOfPlace.image = UIImage(named: theaterNames[indexPath.row])
+        let place = places[indexPath.row]
+        
+        cell.titleLabel.text = place.title
+        cell.locationLabel.text = place.location
+        cell.typeLabel.text = place.type
+        cell.imageOfPlace.image = UIImage(named: place.image)
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
         cell.imageOfPlace.clipsToBounds = true
         
         return cell
-    }
-    
-    //    MARK - UITableViewDelegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
     }
 }
 
