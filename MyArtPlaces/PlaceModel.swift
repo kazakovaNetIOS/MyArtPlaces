@@ -6,17 +6,16 @@
 //  Copyright © 2020 Natalia Kazakova. All rights reserved.
 //
 
-import UIKit
+import RealmSwift
 
-struct Place {
+class Place: Object {
     
-    var title: String
-    var location: String?
-    var type: String?
-    var image: UIImage?
-    var theaterImage: String?
+    @objc dynamic var title = ""
+    @objc dynamic var location: String?
+    @objc dynamic var type: String?
+    @objc dynamic var imageData: Data?
     
-    static let theaterNames = ["Мастерская Петра Фоменко", "Театр сатиры",
+    let theaterNames = ["Мастерская Петра Фоменко", "Театр сатиры",
                         "Театр им. Вахтангова", "Современник",
                         "Театр им. Моссовета", "Содружество актеров Таганки",
                         "Театр им. Пушкина", "МДМ", "РАМТ", "МХТ им. Чехова",
@@ -24,14 +23,20 @@ struct Place {
                         "Московский театр оперетты", "МХАТ им. М. Горького",
                         "Театриум на Серпуховке"]
     
-    static func getPlaces() -> [Place] {
-        
-        var places = [Place]()
+    func savePlaces() {
         
         for place in theaterNames {
-            places.append(Place(title: place, location: "Москва", type: "Театр", image: nil, theaterImage: place))
+            let image = UIImage(named: place)
+            guard let imageData = image?.pngData() else { return }
+            
+            let newPlace = Place()
+            
+            newPlace.title = place
+            newPlace.location = "Moscow"
+            newPlace.type = "Theater"
+            newPlace.imageData = imageData
+            
+            StorageManager.saveObject(newPlace)
         }
-        
-        return places
     }
 }
