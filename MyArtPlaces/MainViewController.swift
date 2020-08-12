@@ -7,34 +7,36 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-//    var places = Place.getPlaces()
+    var places: Results<Place>!
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        places = realm.objects(Place.self)
     }
     
     //    MARK - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return places.isEmpty ? 0 : places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell
         
-//        let place = places[indexPath.row]
-//
-//        cell.titleLabel.text = place.title
-//        cell.locationLabel.text = place.location
-//        cell.typeLabel.text = place.type
-//        cell.imageOfPlace.image = place.image ?? UIImage(named: place.theaterImage!)
-//        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
-//        cell.imageOfPlace.clipsToBounds = true
+        let place = places[indexPath.row]
+
+        cell.titleLabel.text = place.title
+        cell.locationLabel.text = place.location
+        cell.typeLabel.text = place.type
+        cell.imageOfPlace.image = UIImage(data: place.imageData!)
+        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
+        cell.imageOfPlace.clipsToBounds = true
         
         return cell
     }
@@ -45,7 +47,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
         
         newPlaceVC.saveNewPlace()
-//        places.append(newPlaceVC.newPlace!)
         self.tableView.reloadData()
     }
 }
