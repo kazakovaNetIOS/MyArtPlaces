@@ -6,14 +6,15 @@
 //  Copyright © 2020 Natalia Kazakova. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Place {
     
     var title: String
-    var location: String
-    var type: String
-    var image: String
+    var location: String?
+    var type: String?
+    var image: UIImage?
+    var theaterImage: String?
     
     static let theaterNames = ["Мастерская Петра Фоменко", "Театр сатиры",
                         "Театр им. Вахтангова", "Современник",
@@ -28,7 +29,7 @@ struct Place {
         var places = [Place]()
         
         for place in theaterNames {
-            places.append(Place(title: place, location: "Москва", type: "Театр", image: place))
+            places.append(Place(title: place, location: "Москва", type: "Театр", image: nil, theaterImage: place))
         }
         
         return places

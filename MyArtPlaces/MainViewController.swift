@@ -10,8 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let places = Place.getPlaces()
+    var places = Place.getPlaces()
     
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +32,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.titleLabel.text = place.title
         cell.locationLabel.text = place.location
         cell.typeLabel.text = place.type
-        cell.imageOfPlace.image = UIImage(named: place.image)
+        cell.imageOfPlace.image = place.image ?? UIImage(named: place.theaterImage!)
         cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
         cell.imageOfPlace.clipsToBounds = true
         
         return cell
     }
     
-    // MARK - Navifgation
-    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
+    // MARK - Navigation
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         
+        guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
+        
+        newPlaceVC.saveNewPlace()
+        places.append(newPlaceVC.newPlace!)
+        self.tableView.reloadData()
     }
 }
 
