@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController {
     
     var places: Results<Place>!
     
@@ -19,26 +19,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         places = realm.objects(Place.self)
-    }
-    
-    //    MARK - UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.isEmpty ? 0 : places.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell
-        
-        let place = places[indexPath.row]
-
-        cell.titleLabel.text = place.title
-        cell.locationLabel.text = place.location
-        cell.typeLabel.text = place.type
-        cell.imageOfPlace.image = UIImage(data: place.imageData!)
-        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
-        cell.imageOfPlace.clipsToBounds = true
-        
-        return cell
     }
     
     // MARK - Navigation
@@ -51,3 +31,42 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 }
 
+//    MARK - UITableViewDataSource
+
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return places.isEmpty ? 0 : places.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell
+        
+        let place = places[indexPath.row]
+        
+        cell.titleLabel.text = place.title
+        cell.locationLabel.text = place.location
+        cell.typeLabel.text = place.type
+        cell.imageOfPlace.image = UIImage(data: place.imageData!)
+        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
+        cell.imageOfPlace.clipsToBounds = true
+        
+        return cell
+    }
+}
+
+// MARK - UITableViewDelegate
+
+extension MainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let place = places[indexPath.row]
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+            
+            StorageManager.deleteObject(place)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        return [deleteAction]
+    }
+}
