@@ -72,6 +72,7 @@
                                             <outlet property="locationLabel" destination="Trw-m4-4Fn" id="UZD-Oz-LID"/>
                                             <outlet property="titleLabel" destination="8FO-a0-2KO" id="PVa-7q-6Fn"/>
                                             <outlet property="typeLabel" destination="bKK-AO-N1W" id="3TC-or-Rja"/>
+                                            <segue destination="Zfd-kX-YeL" kind="show" identifier="showDetail" id="SQe-54-PfI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -84,7 +85,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Art Places" id="Ld1-bK-4Ma">
+                    <navigationItem key="navigationItem" title="My Art Places" largeTitleDisplayMode="never" id="Ld1-bK-4Ma">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qa6-vL-VwR">
                             <connections>
                                 <segue destination="W6t-sF-oWN" kind="presentation" modalTransitionStyle="crossDissolve" id="Tjd-hC-9WT"/>
@@ -243,7 +244,7 @@
                             <outlet property="delegate" destination="Zfd-kX-YeL" id="5qE-RO-UYa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Place" id="5YO-ES-awR">
+                    <navigationItem key="navigationItem" title="New Place" largeTitleDisplayMode="always" id="5YO-ES-awR">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vRH-Hw-XqF">
                             <connections>
                                 <action selector="cancelAction:" destination="Zfd-kX-YeL" id="2fe-6x-Yr7"/>
@@ -273,8 +274,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ydd-03-SSq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q0O-ee-YtS">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="q0O-ee-YtS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="22"/>
@@ -308,6 +309,9 @@
             <point key="canvasLocation" x="1908.6956521739132" y="132.58928571428572"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="TS6-Tz-Nki"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="photo" width="170.5" height="170.5"/>
     </resources>
