@@ -11,8 +11,17 @@ import RealmSwift
 
 class MainViewController: UIViewController {
     
-    var places: Results<Place>!
-    var ascendingSorting = true
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var places: Results<Place>!
+    private var filteredPlaces: Results<Place>!
+    private var ascendingSorting = true
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     @IBOutlet weak var reversedSortingButton: UIBarButtonItem!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -22,6 +31,13 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         places = realm.objects(Place.self)
+        
+        // Setup the search controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     // MARK - Navigation
@@ -38,7 +54,7 @@ class MainViewController: UIViewController {
         
         if segue.identifier == "showDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let place = places[indexPath.row]
+            let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
             let newPlaceVC = segue.destination as! NewPlaceViewController
             newPlaceVC.currentPlace = place
         }
@@ -73,13 +89,18 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if isFiltering {
+            return filteredPlaces.count
+        }
+        
         return places.isEmpty ? 0 : places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell
         
-        let place = places[indexPath.row]
+        let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
         
         cell.titleLabel.text = place.title
         cell.locationLabel.text = place.location
@@ -106,5 +127,22 @@ extension MainViewController: UITableViewDelegate {
         }
         
         return [deleteAction]
+    }
+}
+
+// MARK - UISearchResultsUpdating
+
+extension MainViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        
+        filteredPlaces = places.filter("title CONTAINS[c] %@ OR location CONTAINS[c] %@ OR type CONTAINS[c] %@", searchText, searchText, searchText)
+        
+        tableView.reloadData()
     }
 }
