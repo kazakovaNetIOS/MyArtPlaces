@@ -34,39 +34,58 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="CcM-4U-f7c">
-                                                    <rect key="frame" x="96" y="8" width="302" height="69"/>
+                                                    <rect key="frame" x="96" y="8" width="208" height="69"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FO-a0-2KO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="302" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="208" height="24"/>
                                                             <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Trw-m4-4Fn">
-                                                            <rect key="frame" x="0.0" y="27" width="302" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="27" width="208" height="20.5"/>
                                                             <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-AO-N1W">
-                                                            <rect key="frame" x="0.0" y="50.5" width="302" height="18.5"/>
+                                                            <rect key="frame" x="0.0" y="50.5" width="208" height="18.5"/>
                                                             <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="90" placeholderIntrinsicHeight="16" translatesAutoresizingMaskIntoConstraints="NO" id="J8Z-Ld-eAz" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="312" y="34.5" width="90" height="16"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="3Lc-83-SrD"/>
+                                                        <constraint firstAttribute="width" constant="90" id="iaa-kc-eLw"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="filledStar"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="emptyStar"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="CcM-4U-f7c" firstAttribute="top" secondItem="ggS-9B-FGe" secondAttribute="top" constant="8" id="9PK-Ll-rqF"/>
-                                                <constraint firstAttribute="trailing" secondItem="CcM-4U-f7c" secondAttribute="trailing" constant="16" id="NuQ-q2-uL7"/>
+                                                <constraint firstItem="J8Z-Ld-eAz" firstAttribute="trailing" secondItem="ggS-9B-FGe" secondAttribute="trailingMargin" constant="8" id="Boq-n6-26r"/>
                                                 <constraint firstAttribute="bottom" secondItem="CcM-4U-f7c" secondAttribute="bottom" constant="8" id="QMX-Kc-vCw"/>
+                                                <constraint firstItem="J8Z-Ld-eAz" firstAttribute="centerY" secondItem="ggS-9B-FGe" secondAttribute="centerY" id="UIa-Mn-gJb"/>
                                                 <constraint firstItem="jF0-R0-2y3" firstAttribute="leading" secondItem="ggS-9B-FGe" secondAttribute="leading" constant="15" id="UhG-dI-Ooe"/>
+                                                <constraint firstItem="J8Z-Ld-eAz" firstAttribute="leading" secondItem="CcM-4U-f7c" secondAttribute="trailing" constant="8" id="hNw-FQ-Es2"/>
                                                 <constraint firstItem="jF0-R0-2y3" firstAttribute="centerY" secondItem="ggS-9B-FGe" secondAttribute="centerY" id="uHU-cE-19A"/>
                                                 <constraint firstItem="CcM-4U-f7c" firstAttribute="leading" secondItem="jF0-R0-2y3" secondAttribute="trailing" constant="16" id="wYx-W7-ob9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cosmosView" destination="J8Z-Ld-eAz" id="oNw-Gf-EKZ"/>
                                             <outlet property="imageOfPlace" destination="jF0-R0-2y3" id="QhY-u9-uwg"/>
                                             <outlet property="locationLabel" destination="Trw-m4-4Fn" id="UZD-Oz-LID"/>
                                             <outlet property="titleLabel" destination="8FO-a0-2KO" id="PVa-7q-6Fn"/>
@@ -130,7 +149,7 @@
             <objects>
                 <tableViewController id="Zfd-kX-YeL" customClass="NewPlaceViewController" customModule="MyArtPlaces" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nJ4-vD-Jyw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
@@ -353,10 +372,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="TS6-Tz-Nki"/>
+        <segue reference="SQe-54-PfI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="24" height="24"/>
+        <image name="emptyStar" width="170.5" height="170.5"/>
+        <image name="filledStar" width="170.5" height="170.5"/>
         <image name="photo" width="170.5" height="170.5"/>
     </resources>
 </document>

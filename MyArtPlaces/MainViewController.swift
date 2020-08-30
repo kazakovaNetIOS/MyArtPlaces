@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
         definesPresentationContext = true
     }
     
-    // MARK - Navigation
+    // MARK: - Navigation
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         
@@ -85,7 +85,7 @@ class MainViewController: UIViewController {
     }
 }
 
-//    MARK - UITableViewDataSource
+// MARK: - UITableViewDataSource
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,7 +94,7 @@ extension MainViewController: UITableViewDataSource {
             return filteredPlaces.count
         }
         
-        return places.isEmpty ? 0 : places.count
+        return places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,14 +106,13 @@ extension MainViewController: UITableViewDataSource {
         cell.locationLabel.text = place.location
         cell.typeLabel.text = place.type
         cell.imageOfPlace.image = UIImage(data: place.imageData!)
-        cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
-        cell.imageOfPlace.clipsToBounds = true
+        cell.cosmosView.rating = place.rating
         
         return cell
     }
 }
 
-// MARK - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension MainViewController: UITableViewDelegate {
     
@@ -134,7 +133,7 @@ extension MainViewController: UITableViewDelegate {
     }
 }
 
-// MARK - UISearchResultsUpdating
+// MARK: - UISearchResultsUpdating
 
 extension MainViewController: UISearchResultsUpdating {
     
