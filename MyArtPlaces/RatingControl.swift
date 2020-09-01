@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class RatingControl: UIStackView {
     
-    // MARK - Properties
+    // MARK: - Properties
     var rating = 0 {
         didSet {
             updateButtonSelectionState()
@@ -31,7 +31,7 @@ import UIKit
         }
     }
 
-    // MARK - Initialization
+    // MARK: - Initialization
     
     override init(frame: CGRect) {
         
@@ -45,7 +45,7 @@ import UIKit
         setupButtons()
     }
     
-    // MARK - Button Action
+    // MARK: - Button Action
     
     @objc func ratingButtonTapped(button: UIButton) {
         
@@ -57,7 +57,7 @@ import UIKit
         rating = selectedRating == rating ? 0 : selectedRating
     }
     
-    // MARK - Private Methods
+    // MARK: - Private Methods
     
     private func setupButtons() {
         

@@ -32,6 +32,17 @@ class NewPlaceViewController: UITableViewController {
         setupEditScreen()
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" {
+            return
+        }
+    
+        let mapVc = segue.destination as! MapViewController
+        mapVc.place = currentPlace
+    }
+    
     func savePlace() {
         
         var image: UIImage?
@@ -94,7 +105,7 @@ class NewPlaceViewController: UITableViewController {
     }
 }
 
-// MARK - TableView delegate
+// MARK: - TableView delegate
 
 extension NewPlaceViewController {
     
@@ -133,7 +144,7 @@ extension NewPlaceViewController {
     }
 }
 
-// MARK - Text field delegate
+// MARK: - Text field delegate
 
 extension NewPlaceViewController: UITextFieldDelegate {
     
@@ -154,7 +165,7 @@ extension NewPlaceViewController: UITextFieldDelegate {
     }
 }
 
-// MARK - Work with image
+// MARK: - Work with image
 
 extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

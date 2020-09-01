@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56013EB724FDA6180091EDB9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56013EB624FDA6180091EDB9 /* MapViewController.swift */; };
 		560C395724E1F0D000EA2AF0 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C395624E1F0D000EA2AF0 /* CustomTableViewCell.swift */; };
 		560C395924E2AAD800EA2AF0 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C395824E2AAD800EA2AF0 /* PlaceModel.swift */; };
 		560F91AA24E33B34005FEAA2 /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560F91A924E33B34005FEAA2 /* NewPlaceViewController.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		3026AC7A37E86913E87655EE /* Pods_MyArtPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyArtPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3A4A04D0E58E3757D3193B /* Pods-MyArtPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyArtPlaces.release.xcconfig"; path = "Target Support Files/Pods-MyArtPlaces/Pods-MyArtPlaces.release.xcconfig"; sourceTree = "<group>"; };
+		56013EB624FDA6180091EDB9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		560C395624E1F0D000EA2AF0 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		560C395824E2AAD800EA2AF0 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		560F91A924E33B34005FEAA2 /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		56F90E5E24E09EDC006789F0 = {
 			isa = PBXGroup;
 			children = (
+				56013EB624FDA6180091EDB9 /* MapViewController.swift */,
 				56F90E6924E09EDC006789F0 /* MyArtPlaces */,
 				56F90E6824E09EDC006789F0 /* Products */,
 				DB99E482E99443C42B62C956 /* Pods */,
@@ -225,6 +228,7 @@
 				560F91AA24E33B34005FEAA2 /* NewPlaceViewController.swift in Sources */,
 				56F90E6B24E09EDC006789F0 /* AppDelegate.swift in Sources */,
 				560F91CC24E499AE005FEAA2 /* StorageManager.swift in Sources */,
+				56013EB724FDA6180091EDB9 /* MapViewController.swift in Sources */,
 				56B864ED24E87CDB0088A9AE /* RatingControl.swift in Sources */,
 				560C395924E2AAD800EA2AF0 /* PlaceModel.swift in Sources */,
 				560C395724E1F0D000EA2AF0 /* CustomTableViewCell.swift in Sources */,
