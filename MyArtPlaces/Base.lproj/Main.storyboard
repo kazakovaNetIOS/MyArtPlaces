@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ydd-03-SSq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ydd-03-SSq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -177,11 +177,26 @@
                                                         <segue destination="imG-s6-Fq2" kind="presentation" identifier="showMap" id="8wr-CA-3hN"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3q-Ip-afO">
+                                                    <rect key="frame" x="20" y="215" width="25" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="PgN-QL-9t3"/>
+                                                        <constraint firstAttribute="height" constant="24" id="qYv-8e-sWw"/>
+                                                    </constraints>
+                                                    <state key="normal" image="calendar.circle.fill" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showCalendar" destination="Zfd-kX-YeL" eventType="touchUpInside" id="iG5-vP-cfM"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="DJK-BZ-mHE" firstAttribute="leading" secondItem="b4K-Br-xZV" secondAttribute="leading" id="3ww-Vj-8sH"/>
                                                 <constraint firstItem="Vvb-q0-wC5" firstAttribute="trailing" secondItem="b4K-Br-xZV" secondAttribute="trailingMargin" id="6FQ-04-BfL"/>
                                                 <constraint firstAttribute="bottom" secondItem="DJK-BZ-mHE" secondAttribute="bottom" id="E72-bC-b0d"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="O3q-Ip-afO" secondAttribute="bottom" id="IFt-7h-WAx"/>
+                                                <constraint firstItem="O3q-Ip-afO" firstAttribute="leading" secondItem="b4K-Br-xZV" secondAttribute="leadingMargin" id="LhZ-Zl-Bgm"/>
                                                 <constraint firstItem="DJK-BZ-mHE" firstAttribute="top" secondItem="b4K-Br-xZV" secondAttribute="top" id="XNE-yg-NMd"/>
                                                 <constraint firstAttribute="trailing" secondItem="DJK-BZ-mHE" secondAttribute="trailing" id="kWb-eT-ZAY"/>
                                                 <constraint firstItem="Vvb-q0-wC5" firstAttribute="bottom" secondItem="b4K-Br-xZV" secondAttribute="bottomMargin" id="s37-j0-SAF"/>
@@ -432,6 +447,7 @@
     <resources>
         <image name="AZ" width="24" height="24"/>
         <image name="Cancel image" width="21" height="21"/>
+        <image name="calendar.circle.fill" catalog="system" width="128" height="121"/>
         <image name="emptyStar" width="170.5" height="170.5"/>
         <image name="filledStar" width="170.5" height="170.5"/>
         <image name="map" width="33" height="33"/>

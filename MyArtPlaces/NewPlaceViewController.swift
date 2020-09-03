@@ -100,8 +100,22 @@ class NewPlaceViewController: UITableViewController {
         saveButton.isEnabled = true
     }
     
+    // MARK: - IBActions
+    
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true)
+    }
+    
+    @IBAction func showCalendar() {
+        let pickerController = CalendarPickerViewController(
+            baseDate: Date(),
+            selectedDateChanged: { [weak self] date in
+                guard self != nil else { return }
+                
+                print(date)
+        })
+        
+        present(pickerController, animated: true, completion: nil)
     }
 }
 
